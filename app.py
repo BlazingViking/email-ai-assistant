@@ -1,7 +1,6 @@
 import streamlit as st
-import openai
-
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+from openai import OpenAI
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def classify_email(email_text):
     prompt = f"""Classify this email into:
