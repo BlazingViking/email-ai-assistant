@@ -12,11 +12,12 @@ def classify_email(email_text):
 
 Email: "{email_text}"
 Just return the category."""
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}]
     )
-    return response['choices'][0]['message']['content'].strip()
+    reply = response.choices[0].message.content
+
 
 def summarize_email(email_text):
     prompt = f"""Summarize this email in 2 short bullet points:
